@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EBFAEB">
+
+    <!-- 1. Toolbar superior -->
+    <include
+        android:id="@+id/includeToolbar"
+        layout="@layout/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 2. ScrollView ubicado entre la Toolbar y el contenedor de botones -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/layoutBotones"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/includeToolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Seleccionar Cliente -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seleccionar Cliente"
+                android:textColor="#0F380F"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="16dp"
+                app:boxBackgroundColor="#FFFFFF"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxStrokeColor="#2CA52C"
+                app:endIconTint="#195D19"
+                app:hintTextColor="#2CA52C">
+
+                <AutoCompleteTextView
+                    android:id="@+id/spnCliente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Buscar por nombre..."
+                    android:inputType="none"
+                    android:textColor="#0F380F" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Seleccionar Vehículo -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seleccionar Vehículo"
+                android:textColor="#0F380F"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="16dp"
+                app:boxBackgroundColor="#FFFFFF"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxStrokeColor="#2CA52C"
+                app:endIconTint="#195D19"
+                app:hintTextColor="#2CA52C">
+
+                <AutoCompleteTextView
+                    android:id="@+id/spnVehiculo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Seleccionar vehículo disponible..."
+                    android:inputType="none"
+                    android:textColor="#0F380F" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Fechas de Renta -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fechas de Renta"
+                android:textColor="#0F380F"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDatePicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="24dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="8dp"
+                app:strokeColor="#C7F0C7"
+                app:strokeWidth="1dp">
+
+                <TextView
+                    android:id="@+id/lblRangoFechas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@android:drawable/ic_menu_my_calendar"
+                    android:drawablePadding="8dp"
+                    android:padding="12dp"
+                    android:text="24/08/2026 - 28/08/2026"
+                    android:textColor="#0F380F"
+                    android:textSize="14sp" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card de Resumen -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp"
+                app:strokeColor="#C7F0C7"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="RESUMEN"
+                        android:textColor="#195D19"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/lblCostoPorDia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Costo por día: $500"
+                        android:textColor="#0F380F" />
+
+                    <TextView
+                        android:id="@+id/lblDias"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Días: 4"
+                        android:textColor="#0F380F" />
+
+                    <TextView
+                        android:id="@+id/lblTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="TOTAL: $2,000.00"
+                        android:textColor="#2CA52C"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 3. Botones de Acción (Confirmar y Cancelar) con padding inferior -->
+    <LinearLayout
+        android:id="@+id/layoutBotones"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConfirmar"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:text="CONFIRMAR"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:backgroundTint="#36C936"
+            app:cornerRadius="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancelar"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:text="CANCELAR"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:backgroundTint="#E4A698"
+            app:cornerRadius="8dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

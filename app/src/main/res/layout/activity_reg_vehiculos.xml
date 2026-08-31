@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EBFAEB">
+
+    <!-- 1. Toolbar superior -->
+    <include
+        android:id="@+id/includeToolbar"
+        layout="@layout/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 2. ScrollView ubicado entre la Toolbar y el Botón -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/btnGuardarVehiculo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/includeToolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- Placa -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPlaca"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:hint="Placa"
+                app:boxBackgroundColor="#FFFFFF"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxStrokeColor="#2CA52C"
+                app:hintTextColor="#2CA52C"
+                app:layout_constraintEnd_toStartOf="@id/tilMarca"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtPlaca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapCharacters"
+                    android:textColor="#0F380F" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Marca Dropdown -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilMarca"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:hint="Marca"
+                app:boxBackgroundColor="#FFFFFF"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxStrokeColor="#2CA52C"
+                app:endIconTint="#195D19"
+                app:hintTextColor="#2CA52C"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tilPlaca"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <AutoCompleteTextView
+                    android:id="@+id/spnMarca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textColor="#0F380F" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Modelo -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilModelo"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:hint="Modelo"
+                app:boxBackgroundColor="#FFFFFF"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxStrokeColor="#2CA52C"
+                app:hintTextColor="#2CA52C"
+                app:layout_constraintEnd_toStartOf="@id/tilAnio"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tilPlaca">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtModelo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textColor="#0F380F" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Año -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilAnio"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:hint="Año"
+                app:boxBackgroundColor="#FFFFFF"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxStrokeColor="#2CA52C"
+                app:hintTextColor="#2CA52C"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tilModelo"
+                app:layout_constraintTop_toBottomOf="@id/tilMarca">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtAnio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textColor="#0F380F" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Precio por Día -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPrecio"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Precio por Día ($)"
+                app:boxBackgroundColor="#FFFFFF"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxStrokeColor="#2CA52C"
+                app:hintTextColor="#2CA52C"
+                app:prefixText="$ "
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tilModelo">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtPrecio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="0.00"
+                    android:inputType="numberDecimal"
+                    android:textColor="#0F380F" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Estado Inicial Dropdown -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEstado"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Estado Inicial"
+                app:boxBackgroundColor="#FFFFFF"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxStrokeColor="#2CA52C"
+                app:endIconTint="#195D19"
+                app:hintTextColor="#2CA52C"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tilPrecio">
+
+                <AutoCompleteTextView
+                    android:id="@+id/spnEstado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textColor="#0F380F" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <!-- 3. Botón de acción principal fijo -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnGuardarVehiculo"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_margin="16dp"
+        android:text="GUARDAR VEHÍCULO"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:backgroundTint="#36C936"
+        app:cornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
