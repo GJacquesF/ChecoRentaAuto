@@ -6,7 +6,9 @@ data class Vehiculo(
     var modelo: String,
     var año: Int,
     var costoRentaDiario: Double,
-    var disponible: Boolean = true
+    var disponible: Boolean = true,
+    var etiqueta: String? = null,
+    var kilometrajeActual: Int = 0
 ) {
     fun registrar() {
         // Inicialización de registro

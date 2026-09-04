@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EBFAEB">
+    android:background="@color/green_background">
 
     <!-- 1. Toolbar superior -->
     <include
@@ -39,13 +39,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:hint="Placa"
-                app:boxBackgroundColor="#FFFFFF"
+                app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="8dp"
                 app:boxCornerRadiusBottomStart="8dp"
                 app:boxCornerRadiusTopEnd="8dp"
                 app:boxCornerRadiusTopStart="8dp"
-                app:boxStrokeColor="#2CA52C"
-                app:hintTextColor="#2CA52C"
+                app:boxStrokeColor="@color/green_primary"
+                app:hintTextColor="@color/green_primary"
                 app:layout_constraintEnd_toStartOf="@id/tilMarca"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -55,7 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textCapCharacters"
-                    android:textColor="#0F380F" />
+                    android:textColor="@color/green_text_dark" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Marca Dropdown -->
@@ -66,13 +66,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:hint="Marca"
-                app:boxBackgroundColor="#FFFFFF"
+                app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="8dp"
                 app:boxCornerRadiusBottomStart="8dp"
                 app:boxCornerRadiusTopEnd="8dp"
                 app:boxCornerRadiusTopStart="8dp"
                 app:boxStrokeColor="#2CA52C"
-                app:endIconTint="#195D19"
+                app:endIconTint="@color/green_dark"
                 app:hintTextColor="#2CA52C"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/tilPlaca"
@@ -83,7 +83,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"
-                    android:textColor="#0F380F" />
+                    android:textColor="@color/green_text_dark" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Modelo -->
@@ -95,13 +95,13 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:hint="Modelo"
-                app:boxBackgroundColor="#FFFFFF"
+                app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="8dp"
                 app:boxCornerRadiusBottomStart="8dp"
                 app:boxCornerRadiusTopEnd="8dp"
                 app:boxCornerRadiusTopStart="8dp"
-                app:boxStrokeColor="#2CA52C"
-                app:hintTextColor="#2CA52C"
+                app:boxStrokeColor="@color/green_primary"
+                app:hintTextColor="@color/green_primary"
                 app:layout_constraintEnd_toStartOf="@id/tilAnio"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tilPlaca">
@@ -111,7 +111,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
-                    android:textColor="#0F380F" />
+                    android:textColor="@color/green_text_dark" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Año -->
@@ -123,13 +123,13 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:hint="Año"
-                app:boxBackgroundColor="#FFFFFF"
+                app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="8dp"
                 app:boxCornerRadiusBottomStart="8dp"
                 app:boxCornerRadiusTopEnd="8dp"
                 app:boxCornerRadiusTopStart="8dp"
-                app:boxStrokeColor="#2CA52C"
-                app:hintTextColor="#2CA52C"
+                app:boxStrokeColor="@color/green_primary"
+                app:hintTextColor="@color/green_primary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/tilModelo"
                 app:layout_constraintTop_toBottomOf="@id/tilMarca">
@@ -139,7 +139,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
-                    android:textColor="#0F380F" />
+                    android:textColor="@color/green_text_dark" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Precio por Día -->
@@ -150,13 +150,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:hint="Precio por Día ($)"
-                app:boxBackgroundColor="#FFFFFF"
+                app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="8dp"
                 app:boxCornerRadiusBottomStart="8dp"
                 app:boxCornerRadiusTopEnd="8dp"
                 app:boxCornerRadiusTopStart="8dp"
-                app:boxStrokeColor="#2CA52C"
-                app:hintTextColor="#2CA52C"
+                app:boxStrokeColor="@color/green_primary"
+                app:hintTextColor="@color/green_primary"
                 app:prefixText="$ "
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -168,7 +168,7 @@
                     android:layout_height="wrap_content"
                     android:hint="0.00"
                     android:inputType="numberDecimal"
-                    android:textColor="#0F380F" />
+                    android:textColor="@color/green_text_dark" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Estado Inicial Dropdown -->
@@ -179,13 +179,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:hint="Estado Inicial"
-                app:boxBackgroundColor="#FFFFFF"
+                app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="8dp"
                 app:boxCornerRadiusBottomStart="8dp"
                 app:boxCornerRadiusTopEnd="8dp"
                 app:boxCornerRadiusTopStart="8dp"
                 app:boxStrokeColor="#2CA52C"
-                app:endIconTint="#195D19"
+                app:endIconTint="@color/green_dark"
                 app:hintTextColor="#2CA52C"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -196,8 +196,65 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"
-                    android:textColor="#0F380F" />
+                    android:textColor="@color/green_text_dark" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Etiqueta -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEtiqueta"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:hint="Etiqueta (ej. SUV)"
+                app:boxBackgroundColor="@color/white"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxStrokeColor="@color/green_primary"
+                app:hintTextColor="@color/green_primary"
+                app:layout_constraintEnd_toStartOf="@id/tilKilometraje"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tilEstado">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtEtiqueta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="@color/green_text_dark" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Kilometraje Inicial -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilKilometraje"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:hint="KM Inicial"
+                app:boxBackgroundColor="@color/white"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxStrokeColor="@color/green_primary"
+                app:hintTextColor="@color/green_primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tilEtiqueta"
+                app:layout_constraintTop_toBottomOf="@id/tilEstado">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtKilometraje"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textColor="@color/green_text_dark" />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
@@ -211,7 +268,7 @@
         android:text="GUARDAR VEHÍCULO"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:backgroundTint="#36C936"
+        app:backgroundTint="@color/green_button"
         app:cornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -2,4 +2,16 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Green Theme Palette -->
+    <color name="green_background">#EBFAEB</color>
+    <color name="green_primary">#2CA52C</color>
+    <color name="green_dark">#195D19</color>
+    <color name="green_light">#C7F0C7</color>
+    <color name="green_text_dark">#0F380F</color>
+    <color name="green_button">#36C936</color>
+
+    <!-- Status & Functional Colors -->
+    <color name="error_red">#D32F2F</color>
+    <color name="cancel_red">#E4A698</color>
 </resources>

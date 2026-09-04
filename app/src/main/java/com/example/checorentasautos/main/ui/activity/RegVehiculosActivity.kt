@@ -24,6 +24,8 @@ class RegVehiculosActivity : AppCompatActivity() {
         val txtAnio: TextInputEditText = findViewById(R.id.txtAnio)
         val txtPrecio: TextInputEditText = findViewById(R.id.txtPrecio)
         val spnEstado: AutoCompleteTextView = findViewById(R.id.spnEstado)
+        val txtEtiqueta: TextInputEditText = findViewById(R.id.txtEtiqueta)
+        val txtKilometraje: TextInputEditText = findViewById(R.id.txtKilometraje)
         val btnGuardar: MaterialButton = findViewById(R.id.btnGuardarVehiculo)
 
         // Configuración de opciones para los desplegables (Dropdowns)
@@ -43,8 +45,10 @@ class RegVehiculosActivity : AppCompatActivity() {
             val anioStr = txtAnio.text.toString().trim()
             val precioStr = txtPrecio.text.toString().trim()
             val estadoSeleccionado = spnEstado.text.toString().trim()
+            val etiqueta = txtEtiqueta.text.toString().trim()
+            val kilometrajeStr = txtKilometraje.text.toString().trim()
 
-            if (placa.isEmpty() || marca.isEmpty() || modelo.isEmpty() || anioStr.isEmpty() || precioStr.isEmpty() || estadoSeleccionado.isEmpty()) {
+            if (placa.isEmpty() || marca.isEmpty() || modelo.isEmpty() || anioStr.isEmpty() || precioStr.isEmpty() || estadoSeleccionado.isEmpty() || kilometrajeStr.isEmpty()) {
                 Toast.makeText(this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -55,7 +59,9 @@ class RegVehiculosActivity : AppCompatActivity() {
                 modelo = modelo,
                 año = anioStr.toInt(),
                 costoRentaDiario = precioStr.toDouble(),
-                disponible = (estadoSeleccionado == "Disponible")
+                disponible = (estadoSeleccionado == "Disponible"),
+                etiqueta = if (etiqueta.isEmpty()) null else etiqueta,
+                kilometrajeActual = kilometrajeStr.toInt()
             )
 
             DataManager.listaVehiculos.add(nuevoVehiculo)

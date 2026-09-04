@@ -14,8 +14,9 @@ import com.example.checorentasautos.main.data.Vehiculo
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.switchmaterial.SwitchMaterial
+import com.google.android.material.textfield.TextInputEditText
 import java.text.SimpleDateFormat
-import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
@@ -44,6 +45,12 @@ class RentaVehiculoActivity : AppCompatActivity() {
         val btnConfirmar: MaterialButton = findViewById(R.id.btnConfirmar)
         val btnCancelar: MaterialButton = findViewById(R.id.btnCancelar)
 
+        // Nuevos campos de entrega
+        val spnGasolina: AutoCompleteTextView = findViewById(R.id.spnGasolina)
+        val txtKilometrajeSalida: TextInputEditText = findViewById(R.id.txtKilometrajeSalida)
+        val txtObservaciones: TextInputEditText = findViewById(R.id.txtObservaciones)
+        val switchCheckRapido: SwitchMaterial = findViewById(R.id.switchCheckRapido)
+
         // 1. Cargar Clientes
         val clientes = DataManager.listaClientes
         val adapterClientes = ArrayAdapter(
@@ -68,10 +75,27 @@ class RentaVehiculoActivity : AppCompatActivity() {
 
         spnVehiculo.setOnItemClickListener { _, _, position, _ ->
             vehiculoSeleccionado = vehiculosDisponibles[position]
+            actualizarDatosVehiculo()
             actualizarResumen(lblCostoPorDia, lblDias, lblTotal)
         }
 
-        // 3. Configurar Selector de Rango de Fechas
+        // 3. Nivel de Gasolina
+        val nivelesGas = arrayOf("Vacío", "1/4", "1/2", "3/4", "Lleno")
+        spnGasolina.setAdapter(ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, nivelesGas))
+
+        // 4. Pre-seleccionar vehículo si viene de Consulta
+        val placaIntent = intent.getStringExtra("PLACA_VEHICULO")
+        if (placaIntent != null) {
+            val vehiculo = DataManager.listaVehiculos.find { it.placa == placaIntent }
+            if (vehiculo != null && vehiculo.disponible) {
+                vehiculoSeleccionado = vehiculo
+                spnVehiculo.setText("${vehiculo.marca} ${vehiculo.modelo} [${vehiculo.placa}] - $${vehiculo.costoRentaDiario}/día", false)
+                actualizarDatosVehiculo()
+                actualizarResumen(lblCostoPorDia, lblDias, lblTotal)
+            }
+        }
+
+        // 5. Configurar Selector de Rango de Fechas
         actualizarTextoFechas(lblRangoFechas)
         actualizarResumen(lblCostoPorDia, lblDias, lblTotal)
 
@@ -85,7 +109,6 @@ class RentaVehiculoActivity : AppCompatActivity() {
                 selection.first?.let { fechaInicioMillis = it }
                 selection.second?.let { fechaFinMillis = it }
 
-                // Calcular diferencia de días
                 val diffMillis = fechaFinMillis - fechaInicioMillis
                 diasCalculados = (diffMillis / (1000 * 60 * 60 * 24)).toInt()
                 if (diasCalculados <= 0) diasCalculados = 1
@@ -97,23 +120,29 @@ class RentaVehiculoActivity : AppCompatActivity() {
             dateRangePicker.show(supportFragmentManager, "DATE_RANGE_PICKER")
         }
 
-        // 4. Botón Confirmar
+        // 6. Botón Confirmar
         btnConfirmar.setOnClickListener {
             val cliente = clienteSeleccionado
             val vehiculo = vehiculoSeleccionado
+            val kmSalidaStr = txtKilometrajeSalida.text.toString()
+            val gasolina = spnGasolina.text.toString()
 
-            if (cliente == null) {
-                Toast.makeText(this, "Selecciona un cliente", Toast.LENGTH_SHORT).show()
+            if (cliente == null || vehiculo == null || kmSalidaStr.isEmpty() || gasolina.isEmpty()) {
+                Toast.makeText(this, "Completa todos los campos, incluyendo datos de entrega", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (vehiculo == null) {
-                Toast.makeText(this, "Selecciona un vehículo", Toast.LENGTH_SHORT).show()
+            val kmSalida = kmSalidaStr.toInt()
+
+            // VALIDACIÓN INTELIGENTE: Kilometraje no puede ser menor al actual
+            if (kmSalida < vehiculo.kilometrajeActual) {
+                Toast.makeText(this, "ERROR: El kilometraje de salida ($kmSalida) no puede ser menor al kilometraje actual del vehículo (${vehiculo.kilometrajeActual})", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
 
-            // Cambiar disponibilidad del vehículo
+            // Actualizar datos del vehículo
             vehiculo.disponible = false
+            vehiculo.kilometrajeActual = kmSalida
 
             // Generar Renta
             val nuevaRenta = Renta(
@@ -122,7 +151,11 @@ class RentaVehiculoActivity : AppCompatActivity() {
                 vehiculo = vehiculo,
                 dias = diasCalculados,
                 costoTotal = vehiculo.costoRentaDiario * diasCalculados,
-                activa = true
+                activa = true,
+                gasolinaEntrega = gasolina,
+                kilometrajeEntrega = kmSalida,
+                observacionesEntrega = txtObservaciones.text.toString(),
+                checkRapidoEntrega = switchCheckRapido.isChecked
             )
 
             DataManager.listaRentas.add(nuevaRenta)
@@ -130,9 +163,12 @@ class RentaVehiculoActivity : AppCompatActivity() {
             finish()
         }
 
-        // 5. Botón Cancelar
-        btnCancelar.setOnClickListener {
-            finish()
+        btnCancelar.setOnClickListener { finish() }
+    }
+
+    private fun actualizarDatosVehiculo() {
+        vehiculoSeleccionado?.let {
+            findViewById<TextInputEditText>(R.id.txtKilometrajeSalida).setText(it.kilometrajeActual.toString())
         }
     }
 
@@ -141,7 +177,6 @@ class RentaVehiculoActivity : AppCompatActivity() {
         sdf.timeZone = TimeZone.getTimeZone("UTC")
         val fechaInicioStr = sdf.format(Date(fechaInicioMillis))
         val fechaFinStr = sdf.format(Date(fechaFinMillis))
-
         lblRangoFechas.text = "$fechaInicioStr - $fechaFinStr"
     }
 

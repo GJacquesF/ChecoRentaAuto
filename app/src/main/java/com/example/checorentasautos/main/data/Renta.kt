@@ -6,7 +6,11 @@ data class Renta(
     val vehiculo: Vehiculo,
     var dias: Int,
     var costoTotal: Double = 0.0,
-    var activa: Boolean = true
+    var activa: Boolean = true,
+    var gasolinaEntrega: String? = null,
+    var kilometrajeEntrega: Int? = null,
+    var observacionesEntrega: String? = null,
+    var checkRapidoEntrega: Boolean = false
 ) {
     init {
         costoTotal = calcularCostoTotal()

@@ -132,8 +132,10 @@
 
             <!-- Card de Resumen -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardResumen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="2dp"
@@ -181,6 +183,92 @@
                         android:textStyle="bold" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
+
+            <!-- Estado de Entrega -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estado de Entrega"
+                android:textColor="#0F380F"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="8dp"
+                app:strokeColor="#C7F0C7"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Nivel de Gasolina"
+                        app:boxStrokeColor="#2CA52C"
+                        app:hintTextColor="#2CA52C">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/spnGasolina"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:hint="Kilometraje de Salida"
+                        app:boxStrokeColor="#2CA52C"
+                        app:hintTextColor="#2CA52C">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtKilometrajeSalida"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:hint="Observaciones"
+                        app:boxStrokeColor="#2CA52C"
+                        app:hintTextColor="#2CA52C">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtObservaciones"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="top"
+                            android:inputType="textMultiLine"
+                            android:lines="3" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchCheckRapido"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Check Rápido Realizado"
+                        android:textColor="#0F380F" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
 
         </LinearLayout>
     </ScrollView>
